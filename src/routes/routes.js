@@ -1,11 +1,10 @@
 import express from "express";
 
-import UploadController from "../controllers/UploadController";
+import UploadController from "../controllers/UploadController.js";
+import upload from "../config/multer.js";
 
-// Inicia o router
 const router = express.Router();
 
-// Endereço do endpoint
-router.post("/upload-file", UploadController.uploadFile);
+router.post("/upload-file", upload.single("file"), UploadController.uploadFile);
 
 export default router;
